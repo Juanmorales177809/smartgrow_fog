@@ -1,0 +1,9 @@
+version: "3"
+services:
+   chamber:
+      build: chamber
+      volumes:
+         - ./chamber:/tmp/
+   
+  
+   
