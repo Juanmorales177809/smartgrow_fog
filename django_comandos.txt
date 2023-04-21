@@ -1,0 +1,14 @@
+//Django
+
+virtualenv <venv> -p python3.6
+pip install django
+py manage.py migrate
+py manage.py runserver
+
+#abrir otra consola
+py manage.py startapp polls
+
+#crear archivo 001.py para usar concepto ORM, para convertir clases a tablas
+py manage.py makemigrations polls
+#ver todos los cambios hechos con migrate
+py manage.py migrate

@@ -1,32 +1,29 @@
 import os, json
-from tkinter import *
 import time
 
-root = Tk()
-root.resizable(False,False)
-url = "192.168.1.128"
+
+url = "10.220.85.126"
 cmd="curl -s -k " + url
-print (cmd)
 
-variable_control = StringVar()
-variable_control_hora = StringVar()
-
-def actualizar_hora():
-    hora = time.strftime("%H:%M:%S")
-    variable_control_hora.set(hora)
-    root.after(1000,actualizar_hora)
-def actualizar():
+def generate(data):
     result = os.popen(cmd).read()
     arr = json.loads(result)
-    variable_control.set(arr['variables']['temp']/100)
-    root.after(1000,actualizar)
+    data['timestamp'] = time.time()
+    data['temperature'] = arr['variables']['temperature']
     
+def main():
+    data = {
+        "device_id": '1',
+        "client_id": "001SMART",
+        "sensor_type": "Temperature",
+        "temperature": 0,
+        "timestamp": time.time()
+    }
+    while True:
+        generate(data)
+        with open('/tmp/output_sensor.json','a') as output_file:
+            output_file.write(f'{json.dumps(data)}\n')
+        time.sleep(0.5)
 
-#temp['variables']['temp']/100
-reloj = Label(root,textvariable=variable_control_hora,fg='blue',font=('Arial',25),padx=40,pady=20)
-reloj.pack()
-label = Label(root,textvariable= variable_control,fg='red',font=('Arial',25),padx=20,pady=20)
-label.pack()
-actualizar_hora()
-actualizar()
-root.mainloop()
+if __name__ == "__main__":
+    main()

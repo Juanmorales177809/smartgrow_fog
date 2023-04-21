@@ -1,0 +1,4 @@
+token =  ldU82bQr-ukNd_n8nCa-cJCbIAx6VV7Aii0hH3FywyoPP99GoHtArX02D11MrRD1aK3E0l2VnV5CneJ3_pE-Cg==
+query = c5ef1be284ba:/# influx query 'from(bucket:"smartdata") |> range(start:-10m)' --org smartgrow --token ldU82bQr-ukNd_n8nCa-cJCbIAx6VV7Aii0hH3FywyoPP99GoHtArX02D11MrRD1aK3E0l2VnV5CneJ3_pE-Cg==
+org_id = 95d898e27b16f2ea
+YKC-yCvdtWYnZTRPFv08CPWaJcozO4GQWrp-oFF0tikBJj-i7Tcu_n7sF1Gcxo4OaJzScdKJjm1RvNI56JeyOA==
